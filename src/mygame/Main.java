@@ -28,8 +28,7 @@ public class Main extends SimpleApplication {
     	if (env.isInitialized()){
             VRAppState vrAppState = new VRAppState(settings, env);
             vrAppState.setMirrorWindowSize(1024, 800);
-            Main app = new Main();
-            app.getStateManager().attach(vrAppState);
+            Main app = new Main(vrAppState);
             app.setLostFocusBehavior(LostFocusBehavior.Disabled);
             app.setSettings(settings);
             app.setShowSettings(false);
@@ -37,6 +36,10 @@ public class Main extends SimpleApplication {
         }
     }
     
+    public Main(AppState... appStates) {
+        super(appStates);
+    }
+
     @Override
     public void simpleInitApp() {
         Box b = new Box(1, 1, 1);
